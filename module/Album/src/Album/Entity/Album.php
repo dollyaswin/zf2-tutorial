@@ -1,33 +1,84 @@
 <?php
+namespace Album\Entity;
 
-namespace Album\Model;
-
+use Doctrine\ORM\Mapping as ORM;
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilterAwareInterface;
-use Zend\InputFilter\InputFilterInterface;
+use Zend\InputFilter\InputFilterInterface; 
 
-class Album implements InputFilterAwareInterface
+/**
+ * A music album.
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="album")
+ * @property string $artist
+ * @property string $title
+ * @property int $id
+ */
+class Album implements InputFilterAwareInterface 
 {
-    public $id;
-    public $artist;
-    public $title;
-
     protected $inputFilter;
 
     /**
-     * Used by ResultSet to pass each database row to the entity
+     * @ORM\Id
+     * @ORM\Column(type="integer");
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public function exchangeArray($data)
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $artist;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $title;
+
+    /**
+     * Magic getter to expose protected properties.
+     *
+     * @param string $property
+     * @return mixed
+     */
+    public function __get($property) 
     {
-        $this->id     = (isset($data['id'])) ? $data['id'] : null;
-        $this->artist = (isset($data['artist'])) ? $data['artist'] : null;
-        $this->title  = (isset($data['title'])) ? $data['title'] : null;
+        return $this->$property;
     }
 
-    public function getArrayCopy()
+    /**
+     * Magic setter to save protected properties.
+     *
+     * @param string $property
+     * @param mixed $value
+     */
+    public function __set($property, $value) 
+    {
+        $this->$property = $value;
+    }
+
+    /**
+     * Convert the object to an array.
+     *
+     * @return array
+     */
+    public function getArrayCopy() 
     {
         return get_object_vars($this);
+    }
+
+    /**
+     * Populate from an array.
+     *
+     * @param array $data
+     */
+    public function populate($data = array()) 
+    {
+        $this->id = $data['id'];
+        $this->artist = $data['artist'];
+        $this->title = $data['title'];
     }
 
     public function setInputFilter(InputFilterInterface $inputFilter)
@@ -43,10 +94,10 @@ class Album implements InputFilterAwareInterface
             $factory = new InputFactory();
 
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'id',
-                'required' => true,
-                'filters'  => array(
-                    array('name' => 'Int'),
+                'name'       => 'id',
+                'required'   => true,
+                'filters' => array(
+                    array('name'    => 'Int'),
                 ),
             )));
 
@@ -92,5 +143,5 @@ class Album implements InputFilterAwareInterface
         }
 
         return $this->inputFilter;
-    }
+    } 
 }

@@ -9,7 +9,6 @@ class AlbumForm extends Form
     {
         // we want to ignore the name passed
         parent::__construct('album');
-
         $this->setAttribute('method', 'post');
         $this->add(array(
             'name' => 'id',
@@ -17,7 +16,6 @@ class AlbumForm extends Form
                 'type'  => 'hidden',
             ),
         ));
-
         $this->add(array(
             'name' => 'artist',
             'attributes' => array(
@@ -27,7 +25,6 @@ class AlbumForm extends Form
                 'label' => 'Artist',
             ),
         ));
-
         $this->add(array(
             'name' => 'title',
             'attributes' => array(
@@ -37,7 +34,6 @@ class AlbumForm extends Form
                 'label' => 'Title',
             ),
         ));
-
         $this->add(array(
             'name' => 'submit',
             'attributes' => array(
@@ -46,6 +42,5 @@ class AlbumForm extends Form
                 'id' => 'submitbutton',
             ),
         ));
-
     }
 }

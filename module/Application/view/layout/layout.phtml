@@ -9,13 +9,13 @@
 
     <!-- Le styles -->
     <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
-                    ->appendStylesheet($this->basePath() . '/css/bootstrap.min.css')
-                    ->appendStylesheet($this->basePath() . '/css/style.css')
-                    ->appendStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css') ?>
+                    ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
+                    ->prependStylesheet($this->basePath() . '/css/style.css')
+                    ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
 
     <!-- Scripts -->
-    <?php echo $this->headScript()->appendFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-                                  ->appendFile($this->basePath() . '/js/jquery-1.7.2.min.js') ?>
+    <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                                  ->prependFile($this->basePath() . '/js/jquery-1.7.2.min.js') ?>
 
   </head>
 
@@ -31,17 +31,6 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
-
-          <div class="dropdown" style="float:right">
-              <?php echo $this->partial('layout/languages.phtml', array(
-                    'lang' => array(
-                        'English'  => 'en-US',
-                        'Français' => 'fr-FR',
-                        'Deutsch'  => 'de-DE',
-                    ),
-                    'selected' => $this->lang,
-              )); ?>
-          </div>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
@@ -62,5 +51,6 @@
 
     </div> <!-- /container -->
 
+  <?php echo $this->inlineScript() ?>
   </body>
 </html>

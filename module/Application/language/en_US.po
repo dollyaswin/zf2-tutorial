@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-05 22:17-0700\n"
-"PO-Revision-Date: 2012-07-09 10:22+0100\n"
-"Last-Translator: Rob Allen <rob@akrabat.com>\n"
+"PO-Revision-Date: 2012-09-13 14:40+0700\n"
+"Last-Translator: Dolly Aswin Harahap <dolly.aswin@gmail.com>\n"
 "Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr ""
 
 #: ../view/application/index/index.phtml:11
 #, php-format
-msgid "Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework webiste which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!"
+msgid "Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!"
 msgstr ""
 
 #: ../view/application/index/index.phtml:12
